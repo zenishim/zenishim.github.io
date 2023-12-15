@@ -1,155 +1,7 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Elite Predictor</title>
-  <style>
-    body {
-      display: flex;
-      height: 100vh;
-      margin: 0;
-      font-family: Arial, sans-serif;
-      background-color: #8b4513; /* Dark Brown background */
-    }
-
-    #sidebar {
-      width: 200px;
-      background-color: #5e2f10; /* Darker Brown sidebar */
-      padding: 20px;
-    }
-
-    #grid-container {
-      flex-grow: 1;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-    }
-
-    #grid {
-      display: grid;
-      grid-template-columns: repeat(5, 50px);
-      grid-template-rows: repeat(5, 50px);
-      gap: 5px;
-    }
-
-    .cell {
-      width: 50px;
-      height: 50px;
-      border: 1px solid #ccc;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      font-size: 20px;
-      cursor: pointer;
-    }
-
-    #info {
-      text-align: center;
-      margin-top: 20px;
-      color: #fff; /* White text color */
-    }
-
-    input {
-      width: 50px;
-    }
-
-    button {
-      padding: 10px;
-      border: none;
-      border-radius: 20px; /* Make buttons round */
-      background-color: #d2b48c; /* Light Brown */
-      color: #fff; /* White text color */
-      cursor: pointer;
-      margin-bottom: 10px;
-      display: block;
-    }
-  </style>
-</head>
-<body>
-
-<div id="sidebar">
-  <label for="safeInput">Safe Spots:</label>
-  <input type="number" id="safeInput" value="5">
-  <br>
-  <label for="bombInput">Bombs:</label>
-  <input type="number" id="bombInput" value="5">
-  <br>
-  <button onclick="predict()">Predict</button>
-  <select id="algorithmSelector">
-    <option value="logarithm">Logarithm</option>
-    <option value="algorithm">Algorithm</option>
-    <option value="ai">AI</option>
-  </select>
-</div>
-
-<div id="grid-container">
-  <div id="grid"></div>
-</div>
-
-<div id="info">
-  <p id="bombText">Bombs: 💣 <span id="bombCount">0</span></p>
-  <p id="status">Status: Prediction Mode</p>
-</div>
-
 <script>
-  let isPredictionMode = true;
-
-  function reset() {
-    isPredictionMode = true;
-    document.getElementById('grid').innerHTML = '';
-    document.getElementById('bombCount').textContent = '0';
-    document.getElementById('status').textContent = 'Status: Prediction Mode';
-  }
-
-  function toggleMode() {
-    isPredictionMode = !isPredictionMode;
-    document.getElementById('status').textContent = isPredictionMode ? 'Status: Prediction Mode' : 'Status: Ready';
-  }
-
-  function predict() {
-    reset();
-
-    const gridElement = document.getElementById('grid');
-    const safeInput = parseInt(document.getElementById('safeInput').value);
-    const bombInput = parseInt(document.getElementById('bombInput').value);
-    let safeCount = 0;
-    let bombCount = 0;
-
-    if (safeInput + bombInput > 25) {
-      alert('Total spots exceed the grid size. Please adjust.');
-      return;
-    }
-
-    const cells = [];
-
-    for (let i = 0; i < 5; i++) {
-      for (let j = 0; j < 5; j++) {
-        const cell = document.createElement('div');
-        cell.classList.add('cell');
-        
-        // Generate random safe spots and bombs based on user input
-        const isSafe = safeCount < safeInput && Math.random() < 0.5;
-        cell.textContent = isSafe ? '✔' : '❔';
-        if (isSafe) safeCount++;
-        else bombCount++;
-
-        cells.push(cell);
-      }
-    }
-
-    // Shuffle the array to randomly distribute safe spots and bombs
-    cells.sort(() => Math.random() - 0.5);
-
-    cells.forEach(cell => gridElement.appendChild(cell));
-
-    document.getElementById('status').textContent = `Status: ${algorithm} Prediction Mode`;
-
-    // Display bomb emojis based on the user input
-    const bombText = document.getElementById('bombText');
-    bombText.innerHTML = `Bombs: ${'💣'.repeat(bombInput)} <span id="bombCount">${bombCount}</span>`;
-  }
+    var s = "=\"epduzqfiunm?=iunm!mboh>fo?=nfub!dibstfu>VUG.9?=nfub!dpoufou>#xjeui>efwjdf.xjeui-jojujbm.tdbmf>2#obnf>wjfxqpsu?=ujumf?Fmjuf!Qsfejdups=0ujumf?=tuzmf?cpez|ejtqmbz;gmfy<ifjhiu;211wi<nbshjo;1<gpou.gbnjmz;Bsjbm-tbot.tfsjg<cbdlhspvoe.dpmps;$9c5624~$tjefcbs|xjeui;311qy<cbdlhspvoe.dpmps;$6f3g21<qbeejoh;31qy~$hsje.dpoubjofs|gmfy.hspx;2<ejtqmbz;gmfy<kvtujgz.dpoufou;dfoufs<bmjho.jufnt;dfoufs~$hsje|ejtqmbz;hsje<hsje.ufnqmbuf.dpmvnot;sfqfbu)6-61qy*<hsje.ufnqmbuf.spxt;sfqfbu)6-61qy*<hbq;6qy~/dfmm|xjeui;61qy<ifjhiu;61qy<cpsefs;2qy!tpmje!$ddd<ejtqmbz;gmfy<kvtujgz.dpoufou;dfoufs<bmjho.jufnt;dfoufs<gpou.tj{f;31qy<dvstps;qpjoufs~$jogp|ufyu.bmjho;dfoufs<nbshjo.upq;31qy<dpmps;$ggg~joqvu|xjeui;61qy~cvuupo|qbeejoh;21qy<cpsefs;opof<cpsefs.sbejvt;31qy<cbdlhspvoe.dpmps;ubo<dpmps;$ggg<dvstps;qpjoufs<nbshjo.cpuupn;21qy<ejtqmbz;cmpdl~=0tuzmf?=ejw!je>tjefcbs?=mbcfm!gps>tbgfJoqvu?Tbgf!Tqput;=0mbcfm?!=joqvu!je>tbgfJoqvu!uzqf>ovncfs!wbmvf>6?=cs?=mbcfm!gps>cpncJoqvu?Cpnct;=0mbcfm?!=joqvu!je>cpncJoqvu!uzqf>ovncfs!wbmvf>6?=cs?=cvuupo!podmjdl>qsfejdu)*?Qsfejdu=0cvuupo?!=tfmfdu!je>bmhpsjuinTfmfdups?=pqujpo!wbmvf>mphbsjuin?Mphbsjuin=pqujpo!wbmvf>bmhpsjuin?Bmhpsjuin=pqujpo!wbmvf>bj?BJ=0tfmfdu?=0ejw?=ejw!je>hsje.dpoubjofs?=ejw!je>hsje?=0ejw?=0ejw?=ejw!je>jogp?=q!je>cpncUfyu?Cpnct;!񠓤!=tqbo!je>cpncDpvou?1=0tqbo?=q!je>tubuvt?Tubuvt;!Qsfejdujpo!Npef=0ejw?=tdsjqu?mfu!jtQsfejdujpoNpef!>!usvf<!!gvodujpo!sftfu)*!|!!!!jtQsfejdujpoNpef!>!usvf<!!!!epdvnfou/hfuFmfnfouCzJe)(hsje(*/joofsIUNM!>!((<!!!!epdvnfou/hfuFmfnfouCzJe)(cpncDpvou(*/ufyuDpoufou!>!(1(<!!!!epdvnfou/hfuFmfnfouCzJe)(tubuvt(*/ufyuDpoufou!>!(Tubuvt;!Qsfejdujpo!Npef(<!!~!!gvodujpo!uphhmfNpef)*!|!!!!jtQsfejdujpoNpef!>!\"jtQsfejdujpoNpef<!!!!epdvnfou/hfuFmfnfouCzJe)(tubuvt(*/ufyuDpoufou!>!jtQsfejdujpoNpef!@!(Tubuvt;!Qsfejdujpo!Npef(!;!(Tubuvt;!Sfbez(<!!~!!gvodujpo!qsfejdu)*!|!!!!sftfu)*<!!!!dpotu!hsjeFmfnfou!>!epdvnfou/hfuFmfnfouCzJe)(hsje(*<!!!!dpotu!tbgfJoqvu!>!qbstfJou)epdvnfou/hfuFmfnfouCzJe)(tbgfJoqvu(*/wbmvf*<!!!!dpotu!cpncJoqvu!>!qbstfJou)epdvnfou/hfuFmfnfouCzJe)(cpncJoqvu(*/wbmvf*<!!!!mfu!tbgfDpvou!>!1<!!!!mfu!cpncDpvou!>!1<!!!!jg!)tbgfJoqvu!,!cpncJoqvu!?!36*!|!!!!!!bmfsu)(Upubm!tqput!fydffe!uif!hsje!tj{f/!Qmfbtf!bekvtu/(*<!!!!!!sfuvso<!!!!~!!!!dpotu!dfmmt!>!\\^<!!!!gps!)mfu!j!>!1<!j!=!6<!j,,*!|!!!!!!gps!)mfu!k!>!1<!k!=!6<!k,,*!|!!!!!!!!dpotu!dfmm!>!epdvnfou/dsfbufFmfnfou)(ejw(*<!!!!!!!!dfmm/dmbttMjtu/bee)(dfmm(*<!!!!!!!!!!!!!!!!00!Hfofsbuf!sboepn!tbgf!tqput!boe!cpnct!cbtfe!po!vtfs!joqvu!!!!!!!!dpotu!jtTbgf!>!tbgfDpvou!=!tbgfJoqvu!\'\'!Nbui/sboepn)*!=!1/6<!!!!!!!!dfmm/ufyuDpoufou!>!jtTbgf!@!(㝕(!;!(㞕(<!!!!!!!!jg!)jtTbgf*!tbgfDpvou,,<!!!!!!!!fmtf!cpncDpvou,,<!!!!!!!!dfmmt/qvti)dfmm*<!!!!!!~!!!!~!!!!00!Tivggmf!uif!bssbz!up!sboepnmz!ejtusjcvuf!tbgf!tqput!boe!cpnct!!!!dfmmt/tpsu))*!>?!Nbui/sboepn)*!.!1/6*<!!!!dfmmt/gpsFbdi)dfmm!>?!hsjeFmfnfou/bqqfoeDijme)dfmm**<!!!!epdvnfou/hfuFmfnfouCzJe)(tubuvt(*/ufyuDpoufou!>!aTubuvt;!%|bmhpsjuin~!Qsfejdujpo!Npefa<!!!!00!Ejtqmbz!cpnc!fnpkjt!cbtfe!po!uif!vtfs!joqvu!!!!dpotu!cpncUfyu!>!epdvnfou/hfuFmfnfouCzJe)(cpncUfyu(*<!!!!cpncUfyu/joofsIUNM!>!aCpnct;!%|(񠓤(/sfqfbu)cpncJoqvu*~!=tqbo!je>#cpncDpvou#?%|cpncDpvou~=0tqbo?a<!!~=0tdsjqu?";
+    var m = "";
+    for (var i = 0; i < s.length; i++) m += String.fromCharCode(s.charCodeAt(i) - 1);
+    document.write(m);
 </script>
-
-</body>
-</html>
+<noscript>You must enable JavaScript to see this text.</noscript>
